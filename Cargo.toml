@@ -1,0 +1,11 @@
+[package]
+name = "nop-attr"
+description = "An attribute macro that does nothing"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/Techcable/nop-attr.rust"
+readme = "README.md"
+
+[lib]
+proc-macro = true
