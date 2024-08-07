@@ -1,4 +1,7 @@
 # nop-attr
+[![Crates.io Version](https://img.shields.io/crates/v/nop-attr)](https://crates.io/crates/nop-attr)
+[![docs.rs](https://img.shields.io/docsrs/nop-attr)](https://docs.rs/nop-attr/latest/)
+
 <!-- cargo-rdme start -->
 
 A procedural-macro attribute that does nothing.
