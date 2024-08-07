@@ -6,7 +6,7 @@ A procedural-macro attribute that does nothing.
 Any code marked with [`#[nop_attr::nop]`](macro@crate::nop) is
 is passed through without modification.
 
-Useful to annotate code with metadata that is ignored atUseful to annotate code with metadata that is ignored atUseful to annotate code with metadata that is ignored atUseful to annotate code with metadata that is ignored at
+Useful to annotate code with metadata.
 
 ## Example
 ```rust
