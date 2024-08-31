@@ -55,7 +55,7 @@
 //!
 //! I recomend [genco](https://docs.rs/genco) instead of [quote](https://docs.rs/quote) for build-time quasiquoting.
 //! It preserves whitespace and supports languages besides rust.
-//! 
+//!
 //! I still use [syn](https://docs.rs/syn) for parsing rust code.
 extern crate proc_macro;
 
@@ -104,7 +104,6 @@ pub fn nop(_attr: TokenStream, item: TokenStream) -> TokenStream {
     item
 }
 
-
 /// A procedural macro that does nothing to the annotated code,
 /// and accepts no arguments.
 ///
@@ -133,10 +132,10 @@ pub fn nop(_attr: TokenStream, item: TokenStream) -> TokenStream {
 #[proc_macro_attribute]
 pub fn nop_noargs(attr: TokenStream, item: TokenStream) -> TokenStream {
     if let Some(first) = attr.into_iter().next() {
-        compile_error(
-            "Cannot give arguments to #[nop_noargs]",
-            first.span(),
-        ).into_iter().chain(item).collect()
+        compile_error("Cannot give arguments to #[nop_noargs]", first.span())
+            .into_iter()
+            .chain(item)
+            .collect()
     } else {
         item
     }
@@ -152,11 +151,10 @@ fn compile_error(msg: &str, span: Span) -> TokenStream {
         set_span(TokenTree::Punct(Punct::new('!', Spacing::Alone))),
         set_span(TokenTree::Group(Group::new(
             Delimiter::Parenthesis,
-            std::iter::once(set_span(
-                TokenTree::Literal(Literal::string(msg))
-            )).collect()
+            std::iter::once(set_span(TokenTree::Literal(Literal::string(msg)))).collect(),
         ))),
-        set_span(TokenTree::Punct(Punct::new(';', Spacing::Alone)))
-    ].into_iter().collect()
+        set_span(TokenTree::Punct(Punct::new(';', Spacing::Alone))),
+    ]
+    .into_iter()
+    .collect()
 }
-
