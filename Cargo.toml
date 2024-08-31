@@ -1,11 +1,13 @@
 [package]
-name = "nop-attr"
-description = "An attribute macro that does nothing"
-version = "0.1.1"
+name = "nop-macros"
+description = "Procedural macros to do nothing, allowing attributes to be used as metadata"
+version = "0.2.0"
 edition = "2021"
 license = "Apache-2.0"
-repository = "https://github.com/Techcable/nop-attr.rust"
+repository = "https://github.com/Techcable/nop-macros.rust"
 readme = "README.md"
+# Migrating from old crate name (nop-attr)
+exclude = ["migration/*"]
 
 [lib]
 proc-macro = true

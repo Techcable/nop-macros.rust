@@ -1,15 +1,16 @@
-//! A procedural-macro attribute that does nothing.
+//! Procedural macros that do nothing, allowing attributes to be used as metadata.
 //!
-//! Any code marked with [`#[nop_attr::nop]`](macro@crate::nop) is
+//! Any code marked with the [`#[nop_macros::nop]`](macro@crate::nop) attribute
 //! is passed through without modification.
 //!
-//! Useful to annotate code with metadata.
+//! Useful for source-code only metadata,
+//! readable by tools but ignored at runtime.
 //!
 //! # Example
 //! ```
-//! pub use nop_attr::nop as example1;
-//! pub use nop_attr::nop_noargs as example2;
-//! pub use nop_attr::nop as example3;
+//! pub use nop_macros::nop as example1;
+//! pub use nop_macros::nop_noargs as example2;
+//! pub use nop_macros::nop as example3;
 //!
 //! #[example1(ignored)]
 //! #[example2]
@@ -42,7 +43,7 @@ use proc_macro::{Delimiter, Group, Ident, Literal, Punct, Spacing, Span, TokenSt
 ///
 /// # Example
 /// ```
-/// #[nop_attr::nop(this_is_ignored, 7)]
+/// #[nop_macros::nop(this_is_ignored, 7)]
 /// pub fn foo() -> i32 {
 ///     7
 /// }
@@ -64,7 +65,7 @@ pub fn nop(_attr: TokenStream, item: TokenStream) -> TokenStream {
 ///
 /// # Example
 /// ```
-/// #[nop_attr::nop_noargs]
+/// #[nop_macros::nop_noargs]
 /// fn foo() -> i32 {
 ///     7
 /// }
@@ -73,7 +74,7 @@ pub fn nop(_attr: TokenStream, item: TokenStream) -> TokenStream {
 ///
 /// ### Error if args passed
 /// ```compile_fail
-/// #[nop_attr::nop_noargs(foo)]
+/// #[nop_macros::nop_noargs(foo)]
 /// fn foo() -> i32 {
 ///     7
 /// }
