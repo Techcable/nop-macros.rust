@@ -57,6 +57,19 @@
 //! It preserves whitespace and supports languages besides rust.
 //!
 //! I still use [syn](https://docs.rs/syn) for parsing rust code.
+//!
+//! # Limitations
+//! Currently, the [`#[nop]`](macro@crate::nop) attribute cannot be used on fields.
+//!
+//! The following code fails to compile:
+//! ```compile_fail
+//! pub use nop_macros::nop as custom;
+//!
+//! pub struct Foo {
+//!     #[custom]
+//!     bar: String,
+//! }
+//! ```
 extern crate proc_macro;
 
 use proc_macro::{Delimiter, Group, Ident, Literal, Punct, Spacing, Span, TokenStream, TokenTree};
